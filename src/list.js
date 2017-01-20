@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class List extends React.Component {
 
@@ -20,7 +21,9 @@ class List extends React.Component {
     return (
       <div>
         <input type='button' onClick={ (() => { this.addItemHandler()}).bind(this)} />
-        {items}
+        <ReactCSSTransitionGroup transitionName="list-item" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
+          {items}
+        </ReactCSSTransitionGroup>
       </div>
     )
   }

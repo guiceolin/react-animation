@@ -1,4 +1,18 @@
 
 .item {
-  background-color: red
+  color: green;
+  border: 1px solid black;
+  width: 100px;
+  height: 100px
+}
+
+.list-item-enter {
+  opacity: 0.01;
+  height: 0px
+}
+
+.list-item-enter.list-item-enter-active {
+  opacity: 1;
+  height: 100px;
+  transition: 700ms;
 }
