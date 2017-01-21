@@ -50,7 +50,7 @@ class List extends React.Component {
           <input type='text' value={this.state.value} onChange={this.handleValueChanged}/>
           <button type='submit'>Add Item</button>
         </form>
-        <ReactCSSTransitionGroup transitionName="list-item" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
+        <ReactCSSTransitionGroup transitionName="list-item" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
           {items}
         </ReactCSSTransitionGroup>
       </div>

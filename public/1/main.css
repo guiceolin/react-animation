@@ -3,16 +3,23 @@
   color: green;
   border: 1px solid black;
   width: 100px;
-  height: 100px
+  height: 100px;
 }
 
 .list-item-enter {
-  opacity: 0.01;
-  height: 0px
+  transform: translate(-150%)
 }
 
 .list-item-enter.list-item-enter-active {
-  opacity: 1;
-  height: 100px;
-  transition: 700ms;
+  transform: translate(0%);
+  transition: transform 300ms ease-in-out;
+}
+
+.list-item-leave {
+  transform: translate(0%);
+}
+
+.list-item-leave.list-item-leave-active {
+  transform: translate(-150%);
+    transition: transform 300ms ease-in-out;
 }
