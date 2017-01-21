@@ -25,13 +25,13 @@ class List extends React.Component {
   handleFormSubmit(event){
     event.preventDefault()
     let state = this.state
-    state.items.push(state.value)
+    state.items.push({id: Date.now() , text: state.value})
     state.value = ''
     this.setState(state)
   }
 
   render() {
-    let items = this.state.items.map(item => <Item text={item} />)
+    let items = this.state.items.map(item => <Item text={item.text} key={item.id} id={item.id} />)
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
