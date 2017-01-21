@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Item from './item'
 
 class List extends React.Component {
 
@@ -30,7 +31,7 @@ class List extends React.Component {
   }
 
   render() {
-    let items = this.state.items.map(item => <div className='item'><p>{item}</p></div>)
+    let items = this.state.items.map(item => <Item text={item} />)
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
