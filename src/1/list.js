@@ -7,20 +7,36 @@ class List extends React.Component {
   constructor() {
     super()
     this.state = {
-      items: []
+      items: [],
+      value:  ''
     }
+
+    this.handleValueChanged = this.handleValueChanged.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  addItemHandler(){
-    this.state.items.push('item')
-    this.setState({items: this.state.items})
+  handleValueChanged(event){
+    let state = this.state
+    state.value = event.target.value
+    this.setState(state)
+  }
+
+  handleFormSubmit(event){
+    event.preventDefault()
+    let state = this.state
+    state.items.push(state.value)
+    state.value = ''
+    this.setState(state)
   }
 
   render() {
     let items = this.state.items.map(item => <div className='item'><p>{item}</p></div>)
     return (
       <div>
-        <input type='button' onClick={ (() => { this.addItemHandler()}).bind(this)} />
+        <form onSubmit={this.handleFormSubmit}>
+          <input type='text' value={this.state.value} onChange={this.handleValueChanged}/>
+          <button type='submit'>Add Item</button>
+        </form>
         <ReactCSSTransitionGroup transitionName="list-item" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
           {items}
         </ReactCSSTransitionGroup>
