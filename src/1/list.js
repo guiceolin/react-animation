@@ -14,6 +14,7 @@ class List extends React.Component {
 
     this.handleValueChanged = this.handleValueChanged.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleRemoveItem = this.handleRemoveItem.bind(this)
   }
 
   handleValueChanged(event){
@@ -30,8 +31,19 @@ class List extends React.Component {
     this.setState(state)
   }
 
+  handleRemoveItem(itemId) {
+    // Remove item by id
+    let items = this.state.items
+    items.splice(items.findIndex((item) => item.id == itemId ), 1 )
+
+    // Update state
+    let state = this.state
+    state.items = items
+    this.setState(state)
+  }
+
   render() {
-    let items = this.state.items.map(item => <Item text={item.text} key={item.id} id={item.id} />)
+    let items = this.state.items.map(item => <Item text={item.text} key={item.id} id={item.id} removeItem={this.handleRemoveItem}/>)
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
