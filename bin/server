@@ -1,2 +1,2 @@
 #!/bin/sh
-ruby -run -e httpd . -p 9090
+ruby -run -e httpd public -p 9090

@@ -3,11 +3,11 @@ var path = require('path');
 
 var config = {
   entry: {
-    1: '1.js',
+    1: '1/app.js',
   },
   output: {
-    path: path.resolve('./dist'),
-    filename: '[name].bundle.js'
+    path: path.resolve('./public'),
+    filename: '[name]/bundle.js'
   },
   module : {
     loaders : [
