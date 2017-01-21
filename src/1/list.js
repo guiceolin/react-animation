@@ -2,35 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Item from './item'
+import ItemForm from './item_form'
 
 class List extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      items: [],
-      value:  ''
+      items: []
     }
 
-    this.handleValueChanged = this.handleValueChanged.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleRemoveItem = this.handleRemoveItem.bind(this)
+    this.addItem = this.addItem.bind(this)
+    this.removeItem = this.removeItem.bind(this)
   }
 
-  handleValueChanged(event){
-    let value = event.target.value
-    this.setState({value})
+  addItem(text){
+    let items = this.state.items
+    items.push({id: Date.now(), text})
+    this.setState({items})
   }
 
-  handleFormSubmit(event){
-    event.preventDefault()
-    let state = this.state
-    state.items.push({id: Date.now() , text: state.value})
-    state.value = ''
-    this.setState(state)
-  }
-
-  handleRemoveItem(itemId) {
+  removeItem(itemId) {
     let items = this.state.items
     items.splice(items.findIndex((item) => item.id == itemId), 1 )
     this.setState({items})
@@ -41,15 +33,12 @@ class List extends React.Component {
       return <Item text={item.text}
                    key={item.id}
                    id={item.id}
-                   removeItem={this.handleRemoveItem}/>
+                   removeItem={this.removeItem}/>
     })
 
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <input type='text' value={this.state.value} onChange={this.handleValueChanged}/>
-          <button type='submit'>Add Item</button>
-        </form>
+        <ItemForm formSubmit={this.addItem} />
         <ReactCSSTransitionGroup transitionName="list-item" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
           {items}
         </ReactCSSTransitionGroup>
