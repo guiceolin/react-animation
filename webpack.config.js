@@ -4,6 +4,7 @@ var path = require('path');
 var config = {
   entry: {
     1: '1/app.js',
+    2: '2/App.js',
   },
   output: {
     path: path.resolve('./public'),

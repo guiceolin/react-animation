@@ -3,7 +3,17 @@ My React Animation Studies
 
 ## Studies
 
-1. Simple add/remove animation on list.
+### 1. Simple add/remove animation on list.
+
+This is my first approach to react, with react animation.
+
+I dont looked up for best practices, doing it my way.
+
+### 2. Same as 1, but with some best pratices.
+
+After read about [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.n0f77bjy9), i decided to re-write study 1,
+
+following some best practices.
 
 ## How to see the studies in action
 ```bash
