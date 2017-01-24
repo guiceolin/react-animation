@@ -2,6 +2,7 @@
 .item {
   color: green;
   border: 1px solid black;
+  list-style: none;
   width: 100px;
   height: 100px;
 }

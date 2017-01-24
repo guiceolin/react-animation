@@ -1,14 +1,20 @@
 import React, {PropTypes} from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Item from './Item'
 
 const ItemList = ({items, onItemRemoved}) => (
   <ul>
-    {items.map(item =>
-      <Item id={item.id}
-            text={item.text}
-            onRemove={onItemRemoved}
-      />
-    )}
+    <ReactCSSTransitionGroup transitionName="list-item"
+                           transitionEnterTimeout={300}
+                           transitionLeaveTimeout={300}>
+      {items.map(item =>
+        <Item id={item.id}
+              key={item.id}
+              text={item.text}
+              onRemove={onItemRemoved}
+        />
+      )}
+    </ReactCSSTransitionGroup>
   </ul>
 )
 
